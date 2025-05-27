@@ -29,7 +29,7 @@ class DataController(BaseController):
 
         return True, ResponseSignal.FILE_UPLOADED_SUCCESSFULLY.value
 
-    def generate_unique_filename(self, original_filename: str, project_id: str):
+    def generate_unique_filepath(self, original_filename: str, project_id: str):
 
         # Generate a unique filename using the project ID and original filename
         random_key = self.generate_random_string()
@@ -51,7 +51,7 @@ class DataController(BaseController):
                 random_key + "_" + cleaned_filename
             )
 
-        return new_file_path
+        return new_file_path, random_key + "_" + cleaned_filename
 
     def get_cleaned_filename(self, original_filename: str):
         # Remove any special characters and spaces from the filename, except for underscores and .
